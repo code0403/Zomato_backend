@@ -4,11 +4,16 @@ from flask_pymongo import pymongo
 from flask import Flask, render_template, request, redirect, flash
 from pymongo import MongoClient
 from datetime import datetime
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = 'Zomato@restaurant'
+app.secret_key = os.getenv('SECRET_KEY')
 
-app.config['MONGO_URI'] = 'mongodb+srv://abhishek:abhishekmasai@cluster0.y8lffxx.mongodb.net/restuarnt?retryWrites=true&w=majority'
+app.config['MONGO_URI'] = os.getenv('MONGO_URI')
 
 # mongo = MongoClient(app.config['MONGO_URI'])
 # db = pymongo(app).db
@@ -167,9 +172,9 @@ def get_next_menu_id():
 
 
 def get_next_order_id():
-    orders = list(db.orders.find().sort('order_id', -1).limit(1))
-    if orders:
-        return orders[0]['order_id'] + 1
+    max_order = db.orders.find_one(sort=[('order_id', -1)])
+    if max_order:
+        return max_order['order_id'] + 1
     return 1
 
 
