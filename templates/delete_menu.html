@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Zesty Zomato - Delete Menu Item</title>
+  <link rel="stylesheet" type="text/css" href="../static/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Delete Menu Item</h1>
+    <p>Are you sure you want to delete the following menu item?</p>
+    <p>Dish ID: {{ menu_item.id }}</p>
+    <p>Dish Name: {{ menu_item.name }}</p>
+    <p>Price: {{ menu_item.price }}</p>
+    <p>Availability: {{ menu_item.availability }}</p>
+    <form action="/menu/delete/{{ menu_item.id }}" method="POST">
+      <button type="submit" class="button">Confirm Delete</button>
+    </form>
+    <a href="/menu" class="button">Go Back</a>
+  </div>
+</body>
+</html>

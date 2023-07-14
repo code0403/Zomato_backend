@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zesty Zomato - Review Orders</title>
+    <link rel="stylesheet" type="text/css" href="../static/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Review Orders</h1>
+      <table>
+        <tr>
+          <th>Order ID</th>
+          <th>Customer Name</th>
+          <th>Dish IDs</th>
+          <th>Status</th>
+          <th>Timestamp</th>
+          <th>Update</th>
+        </tr>
+        {% for order in orders %}
+        <tr>
+          <td>{{ order['order_id'] }}</td>
+          <td>{{ order['customer_name'] }}</td>
+          <td>{{ order['dish_ids'] }}</td>
+          <td>{{ order['status'] }}</td>
+          <td>{{ order['timestamp'] }}</td>
+          <td>
+            <button>
+              <a href="/orders/update/{{order['order_id']}}" class="button"
+                >Update Status</a
+              >
+            </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      <button><a href="/" class="button">Go Back</a></button>
+    </div>
+  </body>
+</html>

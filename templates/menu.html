@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zesty Zomato - Menu</title>
+    <link rel="stylesheet" type="text/css" href="../static/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Menu</h1>
+      <table>
+        <tr>
+          <th>Dish ID</th>
+          <th>Dish Name</th>
+          <th>Price</th>
+          <th>Availability</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+        {% for dish in menu %}
+        <tr>
+          <td>{{ dish.id }}</td>
+          <td>{{ dish.name }}</td>
+          <td>{{ dish.price }}</td>
+          <td>{{ dish.availability }}</td>
+          <td>
+            <a href="/menu/edit/{{dish.id}}"><button>Edit Menu Item</button></a>
+          </td>
+          <td>
+            <a href="/menu/delete/{{dish.id}}"
+              ><button>Delete Menu Item</button></a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      <div class="button-container">
+        <a href="/menu/add"><button>Add Menu Item</button></a>
+        <a href="/"><button>Go Back</button></a>
+      </div>
+    </div>
+  </body>
+</html>

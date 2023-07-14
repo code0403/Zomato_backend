@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Zesty Zomato - Add Menu Item</title>
+  <link rel="stylesheet" type="text/css" href="../static/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Add Menu Item</h1>
+    <form action="/menu/add" method="POST">
+      <label for="dish_name">Dish Name:</label>
+      <input type="text" id="dish_name" name="dish_name" required><br>
+
+      <label for="price">Price:</label>
+      <input type="number" id="price" name="price" required><br>
+
+      <label for="availability">Availability:</label>
+      <select id="availability" name="availability" required>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select><br>
+
+      <button type="submit" class="button">Add Menu Item</button>
+    </form>
+    <button><a href="/menu" class="button">Go Back</a></button>
+  </div>
+</body>
+</html>

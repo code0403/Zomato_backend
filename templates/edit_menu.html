@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Zesty Zomato - Edit Menu Item</title>
+  <link rel="stylesheet" type="text/css" href="../static/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Edit Menu Item</h1>
+    <form action="/menu/edit/{{ menu_item.id }}" method="POST">
+      <label for="dish_name">Dish Name:</label>
+      <input type="text" id="dish_name" name="dish_name" value="{{ menu_item.name }}" required><br>
+
+      <label for="price">Price:</label>
+      <input type="number" id="price" name="price" value="{{ menu_item.price }}" required><br>
+
+      <label for="availability">Availability:</label>
+      <select id="availability" name="availability" required>
+        <option value="yes" {% if menu_item.availability == 'yes' %}selected{% endif %}>Yes</option>
+        <option value="no" {% if menu_item.availability == 'no' %}selected{% endif %}>No</option>
+      </select><br>
+
+      <button type="submit" class="button">Update Menu Item</button>
+    </form>
+    <a href="/menu" class="button">Go Back</a>
+  </div>
+</body>
+</html>
